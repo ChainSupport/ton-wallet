@@ -870,7 +870,8 @@
                 return new Uint8Array(buffer);
             }
             else if (crypto.node) {
-                return Uint8Array.from(crypto.node.createHash('sha512').update(message).digest());
+                const c = require("crypto");
+                return Uint8Array.from(c.createHash('sha512').update(message).digest());
             }
             else {
                 throw new Error("The environment doesn't have sha512 function");
